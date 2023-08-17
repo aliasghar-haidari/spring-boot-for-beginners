@@ -9,11 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
-	
-	@GetMapping
-	public List<String> findAllStudents(){
-		
-		return List.of("Ahmadi","Karimi");
+
+	private StudentSerivce service;
+
+	public StudentController(StudentSerivce service) {
+		this.service = service;
 	}
-	
+
+	@GetMapping
+	public List<Student> findAllStudents() {
+
+		return service.findAllStudents();
+	}
+
 }
